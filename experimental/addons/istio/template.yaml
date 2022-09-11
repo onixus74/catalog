@@ -21,11 +21,31 @@ spec:
             apiVersion: v1
             metadata:
               name: istio-system
-    - name: istio
+    - name: istio-base
       type: helm
       properties:
         repoType: helm
-        url: https://charts.kubevela.net/addons
-        chart: istio
-        version: 1.11.1
+        url: https://istio-release.storage.googleapis.com/charts
+        chart: base
+        version: 1.15.0
+        releaseName: istio-base
         targetNamespace: istio-system
+    - name: istiod
+      type: helm
+      properties:
+        repoType: helm
+        url: https://istio-release.storage.googleapis.com/charts
+        chart: istiod
+        version: 1.15.0
+        releaseName: istiod
+        targetNamespace: istio-system
+    - name: istio-ingressgateway
+      type: helm
+      properties:
+        repoType: helm
+        url: https://istio-release.storage.googleapis.com/charts
+        chart: gateway
+        version: 1.15.0
+        releaseName: istio-ingressgateway
+        targetNamespace: istio-system
+
