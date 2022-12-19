@@ -26,14 +26,30 @@ spec:
               selector: {
                 istio: parameter.gateway
               }
-              servers: [{
+              servers: [
+                {
                  hosts: parameter.hosts
                  port: {
                       name: "http"
                       number: 80
                       protocol: "HTTP"
                  }
-              }]
+                },
+                {
+                  hosts: parameter.hosts
+
+                  port: {
+                    name: "https"
+                    number: 443
+                    protocol: "HTTPS"
+                  }
+
+                  tls: {
+                    mode: "SIMPLE"
+                    credentialName: parameter.tlsSecret
+                  }
+                }
+              ]
             }
         }
 
@@ -61,6 +77,7 @@ spec:
             hosts: [string]
             gateway: *"ingressgateway"|string
             match: [...#uri]
+            tlsSecret: string
             port: int
         }
 

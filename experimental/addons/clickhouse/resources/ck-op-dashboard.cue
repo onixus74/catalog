@@ -1,7 +1,7 @@
 output: {
 	type: "webservice"
 	properties: {
-		image: "ghcr.io/altinity/altinity-dashboard:v0.1.4"
+		image: "ghcr.io/altinity/altinity-dashboard:v0.1.5"
 
 		if parameter["serviceType"] != _|_ {
 			exposeType: parameter["serviceType"]

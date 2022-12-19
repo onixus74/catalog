@@ -27,7 +27,7 @@ spec:
         repoType: helm
         url: https://istio-release.storage.googleapis.com/charts
         chart: base
-        version: 1.15.0
+        version: 1.15.2
         releaseName: istio-base
         targetNamespace: istio-system
     - name: istiod
@@ -36,16 +36,23 @@ spec:
         repoType: helm
         url: https://istio-release.storage.googleapis.com/charts
         chart: istiod
-        version: 1.15.0
+        version: 1.15.2
         releaseName: istiod
         targetNamespace: istio-system
+        #Only use with low resources
+        values:
+          pilot:
+            resources:
+              requests:
+                memory: 512Mi
+
     - name: istio-ingressgateway
       type: helm
       properties:
         repoType: helm
         url: https://istio-release.storage.googleapis.com/charts
         chart: gateway
-        version: 1.15.0
+        version: 1.15.2
         releaseName: istio-ingressgateway
         targetNamespace: istio-system
 
